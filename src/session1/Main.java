@@ -1,5 +1,7 @@
 package session1;
 
+import session1_demo.Toyota;
+
 import java.util.Scanner;
 
 public class Main {
@@ -29,6 +31,10 @@ public class Main {
         TamGiac tg = new TamGiac(a,b,c);
         System.out.println("Chu vi: "+tg.chuVi());
         System.out.println("Dien tich: "+tg.dienTich());
+        Human ah = new Human();
+        ah.getInfo(5,7);
+        Toyota ty = new Toyota();
+        ty.getInfo();
     }
 
     public static boolean checkTamGiac(int a,int b,int c){

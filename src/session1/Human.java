@@ -25,4 +25,15 @@ public class Human {
     public void getInfo(){
         System.out.println("Age: "+age);
     }
+
+    public void getInfo(int a){
+        System.out.println("hello");
+    }
+    public void getInfo(int a,int b){
+
+    }
+    public void getInfo(String a){
+
+    }
+
 }
