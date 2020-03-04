@@ -34,4 +34,8 @@ public class Student {
     public void setMark(Integer mark) {
         this.mark = mark;
     }
+
+    public String toString(){
+        return getName()+"-"+getAge()+"-"+getMark();
+    }
 }
