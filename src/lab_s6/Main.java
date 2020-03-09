@@ -18,17 +18,24 @@ public class Main extends Application {
         launch(args);
     }
 
+    public static Parent listPage;
+    public static Parent formPage;
+
     @Override
     public void start(Stage primaryStage) {
         productStage = primaryStage;
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("list.fxml"));
+            if(listPage == null){
+                listPage = FXMLLoader.load(getClass().getResource("list.fxml"));
+            }
             primaryStage.setTitle("Manage products");
-            primaryStage.setScene(new Scene(root,600,400));
+            primaryStage.setScene(new Scene(listPage,600,400));
             primaryStage.show();
         }catch (Exception e){
             System.out.println(e.getMessage());
         }
 
     }
+
+
 }

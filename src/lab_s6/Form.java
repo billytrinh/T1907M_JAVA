@@ -37,8 +37,8 @@ public class Form {
             prStm.setDouble(3,price);
             prStm.setInt(4,qty);
             if(!prStm.execute()){
-                Parent form = FXMLLoader.load(getClass().getResource("list.fxml"));
-                Main.productStage.getScene().setRoot(form);
+                Main.productStage.getScene().setRoot(Main.listPage);
+                List.reloadData();
             }
 
         }catch (Exception e){
