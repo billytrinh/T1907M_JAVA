@@ -3,11 +3,13 @@ package session6;
 import connector.Connector;
 import lab_s6.Product;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
 public class ProductDataAccessObject implements DataAccessObjectConcreate<Product> {
 
+    // 1 table
     private static ProductDataAccessObject instance;
 
     private ProductDataAccessObject(){
@@ -37,7 +39,7 @@ public class ProductDataAccessObject implements DataAccessObjectConcreate<Produc
 
         return null;
     }
-
+// MVC
     public Product getOne(int id){
         try{
             Connector conn = Connector.getInstance();
@@ -55,16 +57,42 @@ public class ProductDataAccessObject implements DataAccessObjectConcreate<Produc
 
     @Override
     public Boolean create(Product product) {
-        return null;
+        try{
+            Connector conn = Connector.getInstance();
+            String sql_text = "INSERT INTO products (name,description,price,quantity) VALUES('"+product.getName()+
+                    "','"+product.getDescription()+"',"+product.getPrice()+
+                    ","+product.getQuantity()+")";
+            return conn.excuteUpdate(sql_text);
+        }catch (Exception e){
+        }
+
+        return false;
     }
 
     @Override
     public Boolean update(Product product) {
-        return null;
+        try{
+            Connector conn = Connector.getInstance();
+            String sql_text = "UPDATE products SET name = "+product.getName()+
+                    " description = "+ product.getDescription()+
+                    " price = "+ product.getPrice()+
+                    " quantity = "+product.getQuantity()+
+                    " WHERE id =" +product.getId();
+            return conn.excuteUpdate(sql_text);
+        }catch (Exception e){
+        }
+
+        return false;
     }
 
     @Override
     public Boolean delete(Product product) {
-        return null;
+        try{
+            Connector conn = Connector.getInstance();
+            String sql_text = "DELETE FROM products WHERE id="+product.getId();
+            return conn.excuteUpdate(sql_text);
+        }catch (Exception e){
+        }
+        return false;
     }
 }
